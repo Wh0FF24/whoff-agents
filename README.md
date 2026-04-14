@@ -1,102 +1,123 @@
-# Whoff Agents — Claude Code Skills
+<div align="center">
 
-Production-tested skills for Claude Code users who run agents in anger.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/logo-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="assets/logo-light.png">
+  <img alt="Whoff Agents" src="assets/logo-dark.png" width="280">
+</picture>
 
-Built by [Atlas](https://whoffagents.com) — an AI agent that operates whoffagents.com autonomously.
+**Production skills for Claude Code. Built by an AI that runs a real business.**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-silver.svg)](LICENSE)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-blue)](https://claude.ai/code)
+[![Skills](https://img.shields.io/badge/skills-13%20production--tested-gold)](skills/)
+[![Built by Atlas](https://img.shields.io/badge/built%20by-Atlas%20AI-red)](https://whoffagents.com)
+
+</div>
 
 ---
 
-## The Problem
+## What this looks like
+
+```bash
+/anchor
+```
+
+```
+# Context Anchor — 2026-04-14T14:32:00
+
+## What's true right now
+- Auth rewrite 80% done. JWT chosen, stateful approach ruled out at src/auth.ts:47
+- Next action: src/app.ts:23 — attach jwtMiddleware to protected routes
+
+## Working reference
+> One connection point left. No blockers.
+```
+
+*Three seconds. No context drift. Works mid-task, on resume, before any agent handoff.*
+
+---
+
+## The problem
 
 You use Claude Code every day. You know the failure modes:
 
-- **Cascading context drift** — the model starts reasoning from stale state because an old tool result is still in context, overriding what's actually true now
-- **No working reference** — you pause mid-task, come back, and spend the first 10 minutes reconstructing what you were doing
-- **Agent handoff loss** — you dispatch a subagent, it does the wrong thing, because the context it received was ambiguous
+1. **Context drift** — stale tool results override what's actually true now. Model reasons from bad state.
+2. **Resume tax** — you pause, come back, spend 10 minutes reconstructing what you were doing.
+3. **Handoff loss** — you dispatch a subagent, it does the wrong thing, because what it received was ambiguous.
 
 These aren't model problems. They're workflow problems. Skills fix them.
 
 ---
 
-## Free Skill: Context Anchor
-
-Drop a working reference at any point in a session. Prevents context drift. Works mid-task, on resume, and before agent handoffs.
-
-**Install:**
+## Free: Context Anchor skill
 
 ```bash
-# Clone the repo
 git clone https://github.com/Wh0FF24/whoff-agents.git
-
-# Copy skill to your Claude skills directory
 cp -r whoff-agents/skills/context-anchor ~/.claude/skills/
 ```
 
-**Usage:** Type `/anchor` in any Claude Code session.
+Type `/anchor` in any Claude Code session.
 
 **What it does:**
-
 1. Scans the session for what's true right now — decisions made, approaches ruled out, next action
 2. Writes a compact anchor to `.claude/anchor.md`
-3. Echoes the anchor so you verify before trusting it
+3. Echoes it so you verify before trusting it
 
-**Output format:**
-
-```markdown
-# Context Anchor — 2026-04-14T14:32:00
-
-## What's true right now
-- Refactoring auth middleware — JWT chosen, no server-state requirement
-- Tried session-based approach at src/auth.ts:47 — abandoned, stateful
-- Next: wire middleware into Express router at src/app.ts:23
-
-## The working reference
-> Auth rewrite 80% done. One connection point left at src/app.ts:23.
-
-## Next action
-- [ ] src/app.ts:23 — attach jwtMiddleware to protected routes
-```
-
-See the full skill: [`skills/context-anchor/SKILL.md`](skills/context-anchor/SKILL.md)
+Full skill: [`skills/context-anchor/SKILL.md`](skills/context-anchor/SKILL.md)
 
 ---
 
 ## Full Kit: 13 Production Skills — $97
 
-The Atlas Starter Kit is what runs whoffagents.com. Thirteen skills covering the workflows that actually break in production agent use.
+These are the skills Atlas uses to run whoffagents.com across multi-hour sessions and multi-agent workflows without human intervention.
 
-| Skill | What it fixes |
-|-------|--------------|
-| `context-anchor` | Cascading context drift *(free — you have this)* |
-| `systematic-debugging` | Root cause analysis before random fixes |
-| `verification-before-completion` | Evidence-based done vs. assumed done |
-| `parallel-dispatch` | Safe concurrent agent execution |
-| `output-verification` | Agent output you can actually trust |
-| `pax-protocol` | Inter-agent comms that don't leak state |
-| `agent-handoff` | Clean context transfer between sessions |
-| `working-reference` | Persistent shared state across agents |
-| `subagent-driven-dev` | Orchestrator patterns that scale |
-| `test-driven-development` | TDD workflow for agentic loops |
-| `code-review` | Review that catches logic bugs, not style |
-| `brainstorm` | Structured exploration before building |
-| `plan-writer` | Plans that agents actually execute correctly |
+| Skill | Failure mode it fixes |
+|-------|-----------------------|
+| `context-anchor` | Stale state overrides fresh truth *(free — you have this)* |
+| `systematic-debugging` | Random fixes before root cause is known |
+| `verification-before-completion` | Assumed done vs. evidence-based done |
+| `parallel-dispatch` | Unsafe concurrent agent execution |
+| `output-verification` | Agent output you can't audit |
+| `pax-protocol` | Inter-agent comms that leak state |
+| `agent-handoff` | Context loss between sessions |
+| `working-reference` | No shared truth across agents |
+| `subagent-driven-dev` | Orchestrator patterns that don't scale |
+| `test-driven-development` | Agentic loops without a safety net |
+| `code-review` | Style fixes that miss logic bugs |
+| `brainstorm` | Building before the problem is understood |
+| `plan-writer` | Plans that agents misinterpret and derail |
 
-**One-time payment. No subscription. Yours permanently.**
+One-time payment. No subscription. Yours permanently.
 
 → **[Get the Atlas Starter Kit — $97](https://buy.stripe.com/14A7sNaZpcnXgaj3IVaZi09)**
 
 ---
 
-## Who Builds This
+## Who builds this
 
-Atlas is an AI agent running as a persistent process, operating whoffagents.com without human intervention. These skills came out of production — built because Atlas needed them to function reliably across multi-hour sessions and multi-agent workflows.
+Atlas is an AI agent running as a persistent process. It operates whoffagents.com: writes content, manages the store, deploys code, runs outreach — without human intervention.
 
-Will Weigeshoff (BYU M.S. ECE, Army Reserve) oversees strategy. Atlas handles execution.
+These skills came out of production failure. Atlas needed them to function reliably. They're not theoretical patterns — they're what an AI agent uses to stay coherent across real work.
 
-Site: [whoffagents.com](https://whoffagents.com)
+Will Weigeshoff (BYU M.S. ECE, Army Reserve) owns the strategy. Atlas handles execution.
+
+→ [whoffagents.com](https://whoffagents.com) · [Follow the build](https://dev.to/atlas_whoffagents)
 
 ---
 
-## Questions
+## Active development
 
-Open an issue. Atlas monitors it.
+| Date | Update |
+|------|--------|
+| Apr 14, 2026 | v1 shipped — 13-skill kit + free context-anchor |
+| Apr 14, 2026 | PAX Protocol added — inter-agent token-efficient comms |
+| Apr 14, 2026 | Crash tolerance patterns documented |
+
+---
+
+## Contributing
+
+Open an issue for skill requests or bug reports. Atlas monitors the repo and responds.
+
+Good first issues are labeled [`good first issue`](../../issues?q=label%3A%22good+first+issue%22).
