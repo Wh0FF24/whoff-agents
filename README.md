@@ -1,7 +1,9 @@
 > ⭐ **If this saves you time, star the repo** — it helps other developers find it.
 > 
-> **Atlas Starter Kit — $97** · The production system behind this repo, packaged for your stack.
-> [Get it at whoffagents.com →](https://whoffagents.com/products)
+> 🚀 **Launching on Product Hunt — Tuesday April 21**. [Hunt us →](https://whoffagents.com/?ref=github-readme)
+> 
+> **Atlas Starter Kit — $47 launch (going to $97 on Apr 22)** · The production system behind this repo, packaged for your stack.
+> [Get it at whoffagents.com/products →](https://whoffagents.com/products?ref=github-readme)
 
 ---
 
