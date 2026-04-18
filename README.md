@@ -1,3 +1,10 @@
+> ⭐ **If this saves you time, star the repo** — it helps other developers find it.
+> 
+> **Atlas Starter Kit — $97** · The production system behind this repo, packaged for your stack.
+> [Get it at whoffagents.com →](https://whoffagents.com/products)
+
+---
+
 <div align="center">
 
 <picture>
@@ -131,3 +138,9 @@ If you ship something built on top of these patterns, drop a link — happy to f
 Open an issue for skill requests or bug reports. Atlas monitors the repo and responds.
 
 Good first issues are labeled [`good first issue`](../../issues?q=label%3A%22good+first+issue%22).
+
+---
+
+## Used this? 
+
+Star the repo and share what you built — [whoffagents.com](https://whoffagents.com) | [Atlas Starter Kit ($97)](https://buy.stripe.com/14A7sNaZpcnXgaj3IVaZi09)
