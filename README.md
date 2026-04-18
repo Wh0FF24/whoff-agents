@@ -1,72 +1,133 @@
-> ⭐ **If this saves you time, star the repo** — it helps other developers find it.
-> 
-> **Atlas Starter Kit — $97** · The production system behind this repo, packaged for your stack.
-> [Get it at whoffagents.com →](https://whoffagents.com/products)
+<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/logo-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="assets/logo-light.png">
+  <img alt="Whoff Agents" src="assets/logo-dark.png" width="280">
+</picture>
+
+**Production skills for Claude Code. Built by an AI that runs a real business.**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-silver.svg)](LICENSE)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-blue)](https://claude.ai/code)
+[![Skills](https://img.shields.io/badge/skills-13%20production--tested-gold)](skills/)
+[![Built by Atlas](https://img.shields.io/badge/built%20by-Atlas%20AI-red)](https://whoffagents.com)
+
+</div>
 
 ---
 
-# Whoff Agents
-
-AI-operated developer tools studio. MCP servers, skills, and starter kits built and maintained by Atlas.
-
-**What you get:**
-- Premium MCP servers (Crypto Data, Trading Signals, Workflow Automator, Security Scanner)
-- Production-ready Claude Code skills (SEO Writer, Ship Fast Pack)
-- Starter kits for AI SaaS projects
-- Open-source tools and automation scripts
-
-**Built for:** Developers using Claude Code, Cursor, Windsurf, or any MCP-compatible AI tool.
-
-Browse all products at [whoffagents.com](https://whoffagents.com)
-
----
-
-## Quick Start — Free Anchor Skill
-
-The **Anchor** skill spawns a full task context with your project loaded. Use it to bootstrap AI agents with complete codebase knowledge in seconds.
+## What this looks like
 
 ```bash
-# 1. Clone or download
-git clone https://github.com/Wh0FF24/whoff-agents.git
-
-# 2. Copy the anchor skill to your Claude Code project
-cp whoff-agents/skills/anchor.md .claude/skills/anchor.md
-
-# 3. Use it
-# In Claude Code: /anchor — Atlas spawns a task anchor with full context
+/anchor
 ```
 
-See [products/](products/) for MCP server implementations and [tools/](tools/) for automation scripts.
+```
+# Context Anchor — 2026-04-14T14:32:00
+
+## What's true right now
+- Auth rewrite 80% done. JWT chosen, stateful approach ruled out at src/auth.ts:47
+- Next action: src/app.ts:23 — attach jwtMiddleware to protected routes
+
+## Working reference
+> One connection point left. No blockers.
+```
+
+*Three seconds. No context drift. Works mid-task, on resume, before any agent handoff.*
 
 ---
 
-## Projects
+## The problem
 
-| Product | Type | Price | Status |
-|---------|------|-------|--------|
-| [Crypto Data MCP](products/crypto-data-mcp/) | MCP Server | Free | Live |
-| [Ship Fast Skill Pack](products/ship-fast-skill-pack/) | Skill Pack | $49 | Live |
-| [SEO Writer Skill](products/seo-writer-skill/) | Skill | $19 | Live |
-| [Workflow Automator MCP](products/workflow-automator-mcp/) | MCP Server | Free/Pro $15/mo | Live |
-| [Trading Signals MCP](products/trading-signals-mcp/) | MCP Server | $29/mo | Live |
-| [AI SaaS Starter Kit](products/ai-saas-starter/) | Kit | $99 | Live |
+You use Claude Code every day. You know the failure modes:
 
----
+1. **Context drift** — stale tool results override what's actually true now. Model reasons from bad state.
+2. **Resume tax** — you pause, come back, spend 10 minutes reconstructing what you were doing.
+3. **Handoff loss** — you dispatch a subagent, it does the wrong thing, because what it received was ambiguous.
 
-## Automation & Tools
-
-Scripts for content generation, social posting, and deployment:
-- `tools/post_to_x.py` — Tweet from @AtlasWhoff
-- `tools/post_to_devto.py` — Publish Dev.to articles
-- `tools/create_short_v2.py` — Generate YouTube Shorts with TTS
-- `tools/batch_shorts_generator.py` — Batch video processing
-- `tools/content_flywheel.py` — Transform 1 article into 5 formats
-- `tools/upload_to_youtube.py` — Upload to YouTube via OAuth
-
-See [AGENTS.md](AGENTS.md) for project structure and setup.
+These aren't model problems. They're workflow problems. Skills fix them.
 
 ---
 
-## Used this? 
+## Free: Context Anchor skill
 
-Star the repo and share what you built — [whoffagents.com](https://whoffagents.com) | [Atlas Starter Kit ($97)](https://buy.stripe.com/14A7sNaZpcnXgaj3IVaZi09)
+```bash
+git clone https://github.com/Wh0FF24/whoff-agents.git
+cp -r whoff-agents/skills/context-anchor ~/.claude/skills/
+```
+
+Type `/anchor` in any Claude Code session.
+
+**What it does:**
+1. Scans the session for what's true right now — decisions made, approaches ruled out, next action
+2. Writes a compact anchor to `.claude/anchor.md`
+3. Echoes it so you verify before trusting it
+
+Full skill: [`skills/context-anchor/SKILL.md`](skills/context-anchor/SKILL.md)
+
+---
+
+## Full Kit: 13 Production Skills — $47 launch / $97 after Apr 22
+
+These are the skills Atlas uses to run whoffagents.com across multi-hour sessions and multi-agent workflows without human intervention.
+
+| Skill | Failure mode it fixes |
+|-------|-----------------------|
+| `context-anchor` | Stale state overrides fresh truth *(free — you have this)* |
+| `systematic-debugging` | Random fixes before root cause is known |
+| `verification-before-completion` | Assumed done vs. evidence-based done |
+| `parallel-dispatch` | Unsafe concurrent agent execution |
+| `output-verification` | Agent output you can't audit |
+| `pax-protocol` | Inter-agent comms that leak state |
+| `agent-handoff` | Context loss between sessions |
+| `working-reference` | No shared truth across agents |
+| `subagent-driven-dev` | Orchestrator patterns that don't scale |
+| `test-driven-development` | Agentic loops without a safety net |
+| `code-review` | Style fixes that miss logic bugs |
+| `brainstorm` | Building before the problem is understood |
+| `plan-writer` | Plans that agents misinterpret and derail |
+
+One-time payment. No subscription. Yours permanently.
+
+→ **[Get the Atlas Starter Kit — $47 launch (was $97)](https://buy.stripe.com/8x2bJ39VlgEd2jt2ERaZi0i)**
+
+---
+
+## Who builds this
+
+Atlas is an AI agent running as a persistent process. It operates whoffagents.com: writes content, manages the store, deploys code, runs outreach — without human intervention.
+
+These skills came out of production failure. Atlas needed them to function reliably. They're not theoretical patterns — they're what an AI agent uses to stay coherent across real work.
+
+Will Weigeshoff (BYU M.S. ECE, Army Reserve) owns the strategy. Atlas handles execution.
+
+→ [whoffagents.com](https://whoffagents.com) · [Follow the build](https://dev.to/atlas_whoffagents)
+
+---
+
+## Active development
+
+| Date | Update |
+|------|--------|
+| Apr 14, 2026 | v1 shipped — 13-skill kit + free context-anchor |
+| Apr 14, 2026 | PAX Protocol added — inter-agent token-efficient comms |
+| Apr 14, 2026 | Crash tolerance patterns documented |
+
+---
+
+## Plays well with
+
+These skills drop in alongside other agentic-AI tooling. Notable peer:
+
+- **[OpenSpace](https://github.com/HKUDS/OpenSpace)** — open-source skill-evolution engine. Captures winning workflows from agent execution and auto-improves them. Skills authored by these patterns drop directly into OpenSpace's skill registry and benefit from its auto-fix + sharing layer.
+
+If you ship something built on top of these patterns, drop a link — happy to feature it.
+
+---
+
+## Contributing
+
+Open an issue for skill requests or bug reports. Atlas monitors the repo and responds.
+
+Good first issues are labeled [`good first issue`](../../issues?q=label%3A%22good+first+issue%22).
