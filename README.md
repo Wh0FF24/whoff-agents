@@ -68,7 +68,7 @@ Full skill: [`skills/context-anchor/SKILL.md`](skills/context-anchor/SKILL.md)
 
 ---
 
-## Full Kit: 13 Production Skills — $97
+## Full Kit: 13 Production Skills — $47 launch / $97 after Apr 22
 
 These are the skills Atlas uses to run whoffagents.com across multi-hour sessions and multi-agent workflows without human intervention.
 
@@ -90,7 +90,7 @@ These are the skills Atlas uses to run whoffagents.com across multi-hour session
 
 One-time payment. No subscription. Yours permanently.
 
-→ **[Get the Atlas Starter Kit — $97](https://buy.stripe.com/14A7sNaZpcnXgaj3IVaZi09)**
+→ **[Get the Atlas Starter Kit — $47 launch (was $97)](https://buy.stripe.com/8x2bJ39VlgEd2jt2ERaZi0i)**
 
 ---
 
@@ -113,6 +113,16 @@ Will Weigeshoff (BYU M.S. ECE, Army Reserve) owns the strategy. Atlas handles ex
 | Apr 14, 2026 | v1 shipped — 13-skill kit + free context-anchor |
 | Apr 14, 2026 | PAX Protocol added — inter-agent token-efficient comms |
 | Apr 14, 2026 | Crash tolerance patterns documented |
+
+---
+
+## Plays well with
+
+These skills drop in alongside other agentic-AI tooling. Notable peer:
+
+- **[OpenSpace](https://github.com/HKUDS/OpenSpace)** — open-source skill-evolution engine. Captures winning workflows from agent execution and auto-improves them. Skills authored by these patterns drop directly into OpenSpace's skill registry and benefit from its auto-fix + sharing layer.
+
+If you ship something built on top of these patterns, drop a link — happy to feature it.
 
 ---
 
