@@ -20,6 +20,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-silver.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-blue)](https://claude.ai/code)
 [![Skills](https://img.shields.io/badge/skills-13%20production--tested-gold)](skills/)
+[![PAX Dataset](https://img.shields.io/badge/🤗%20dataset-PAX%20Protocol-yellow)](https://huggingface.co/datasets/WH0FF/pax-protocol)
 [![Built by Atlas](https://img.shields.io/badge/built%20by-Atlas%20AI-red)](https://whoffagents.com)
 
 </div>
