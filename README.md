@@ -1,12 +1,3 @@
-> ⭐ **If this saves you time, star the repo** — it helps other developers find it.
-> 
-> 🚀 **Launching on Product Hunt — Tuesday April 21**. [Hunt us →](https://whoffagents.com/?ref=github-readme)
-> 
-> **Atlas Starter Kit — $47 launch (going to $97 on Apr 22)** · The production system behind this repo, packaged for your stack.
-> [Get it at whoffagents.com/products →](https://whoffagents.com/products?ref=github-readme)
-
----
-
 <div align="center">
 
 <picture>
@@ -76,9 +67,11 @@ Type `/anchor` in any Claude Code session.
 
 Full skill: [`skills/context-anchor/SKILL.md`](skills/context-anchor/SKILL.md)
 
+> ⭐ If this saves you time, star the repo — it helps other developers find it.
+
 ---
 
-## Full Kit: 13 Production Skills — $47 launch / $97 after Apr 22
+## Full Kit: 13 Production Skills
 
 These are the skills Atlas uses to run whoffagents.com across multi-hour sessions and multi-agent workflows without human intervention.
 
@@ -100,7 +93,17 @@ These are the skills Atlas uses to run whoffagents.com across multi-hour session
 
 One-time payment. No subscription. Yours permanently.
 
-→ **[Get the Atlas Starter Kit — $47 launch (was $97)](https://buy.stripe.com/8x2bJ39VlgEd2jt2ERaZi0i)**
+→ **[Get the Atlas Starter Kit — $97](https://buy.stripe.com/8x2bJ39VlgEd2jt2ERaZi0i)**
+
+---
+
+## This system runs in production
+
+Atlas publishes a live ops feed every 15 minutes — real Stripe data, GitHub activity, Beehiiv subscribers, PostHog events. No dashboards. No human in the loop.
+
+→ [whoffagents.com/atlas/ops](https://github.com/Wh0FF24/atlas-ops) — public JSON feed, updated automatically
+
+Read the war story: [My Stripe auto-delivery script marked a customer as delivered — it never sent the email](https://dev.to/whoffagents/my-stripe-auto-delivery-script-marked-a-customer-as-delivered-it-never-sent-the-email-3opg)
 
 ---
 
@@ -108,11 +111,11 @@ One-time payment. No subscription. Yours permanently.
 
 Atlas is an AI agent running as a persistent process. It operates whoffagents.com: writes content, manages the store, deploys code, runs outreach — without human intervention.
 
-These skills came out of production failure. Atlas needed them to function reliably. They're not theoretical patterns — they're what an AI agent uses to stay coherent across real work.
+These skills came out of production failure. Atlas needed them to function reliably across real sessions, real customers, and real incidents. They're not theoretical patterns.
 
-Will Weigeshoff (BYU M.S. ECE, Army Reserve) owns the strategy. Atlas handles execution.
+Will (BYU M.S. ECE, Army Reserve) owns the strategy. Atlas handles execution.
 
-→ [whoffagents.com](https://whoffagents.com) · [Follow the build](https://dev.to/atlas_whoffagents)
+→ [whoffagents.com](https://whoffagents.com) · [Follow the build on dev.to](https://dev.to/atlas_whoffagents)
 
 ---
 
@@ -120,6 +123,7 @@ Will Weigeshoff (BYU M.S. ECE, Army Reserve) owns the strategy. Atlas handles ex
 
 | Date | Update |
 |------|--------|
+| Apr 2026 | Paperclip multi-agent org — 6 agents, live orchestration |
 | Apr 14, 2026 | v1 shipped — 13-skill kit + free context-anchor |
 | Apr 14, 2026 | PAX Protocol added — inter-agent token-efficient comms |
 | Apr 14, 2026 | Crash tolerance patterns documented |
@@ -141,9 +145,3 @@ If you ship something built on top of these patterns, drop a link — happy to f
 Open an issue for skill requests or bug reports. Atlas monitors the repo and responds.
 
 Good first issues are labeled [`good first issue`](../../issues?q=label%3A%22good+first+issue%22).
-
----
-
-## Used this? 
-
-Star the repo and share what you built — [whoffagents.com](https://whoffagents.com) | [Atlas Starter Kit ($97)](https://buy.stripe.com/14A7sNaZpcnXgaj3IVaZi09)
