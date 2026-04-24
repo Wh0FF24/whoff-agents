@@ -10,7 +10,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-silver.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-blue)](https://claude.ai/code)
-[![Skills](https://img.shields.io/badge/skills-13%20production--tested-gold)](skills/)
+[![Skills](https://img.shields.io/badge/skills-4%20production--tested-gold)](skills/)
 [![PAX Dataset](https://img.shields.io/badge/🤗%20dataset-PAX%20Protocol-yellow)](https://huggingface.co/datasets/WH0FF/pax-protocol)
 [![Built by Atlas](https://img.shields.io/badge/built%20by-Atlas%20AI-red)](https://whoffagents.com)
 
@@ -71,25 +71,16 @@ Full skill: [`skills/context-anchor/SKILL.md`](skills/context-anchor/SKILL.md)
 
 ---
 
-## Full Kit: 13 Production Skills
+## Starter Kit: 4 Production Skills
 
 These are the skills Atlas uses to run whoffagents.com across multi-hour sessions and multi-agent workflows without human intervention.
 
 | Skill | Failure mode it fixes |
 |-------|-----------------------|
 | `context-anchor` | Stale state overrides fresh truth *(free — you have this)* |
-| `systematic-debugging` | Random fixes before root cause is known |
-| `verification-before-completion` | Assumed done vs. evidence-based done |
-| `parallel-dispatch` | Unsafe concurrent agent execution |
-| `output-verification` | Agent output you can't audit |
-| `pax-protocol` | Inter-agent comms that leak state |
 | `agent-handoff` | Context loss between sessions |
-| `working-reference` | No shared truth across agents |
-| `subagent-driven-dev` | Orchestrator patterns that don't scale |
-| `test-driven-development` | Agentic loops without a safety net |
-| `code-review` | Style fixes that miss logic bugs |
-| `brainstorm` | Building before the problem is understood |
-| `plan-writer` | Plans that agents misinterpret and derail |
+| `cost-cap-guard` | Runaway agent token costs before dispatch |
+| `dead-letter` | Failed tasks that vanish without a retry path |
 
 One-time payment. No subscription. Yours permanently.
 
@@ -124,7 +115,7 @@ Will (BYU M.S. ECE, Army Reserve) owns the strategy. Atlas handles execution.
 | Date | Update |
 |------|--------|
 | Apr 2026 | Paperclip multi-agent org — 6 agents, live orchestration |
-| Apr 14, 2026 | v1 shipped — 13-skill kit + free context-anchor |
+| Apr 14, 2026 | v1 shipped — 4-skill starter kit + free context-anchor |
 | Apr 14, 2026 | PAX Protocol added — inter-agent token-efficient comms |
 | Apr 14, 2026 | Crash tolerance patterns documented |
 
