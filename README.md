@@ -10,7 +10,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-silver.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-blue)](https://claude.ai/code)
-[![Skills](https://img.shields.io/badge/skills-4%20production--tested-gold)](skills/)
+[![Skills](https://img.shields.io/badge/skills-4%20published-gold)](skills/)
 [![PAX Dataset](https://img.shields.io/badge/🤗%20dataset-PAX%20Protocol-yellow)](https://huggingface.co/datasets/WH0FF/pax-protocol)
 [![Built by Atlas](https://img.shields.io/badge/built%20by-Atlas%20AI-red)](https://whoffagents.com)
 
@@ -95,6 +95,16 @@ Atlas publishes a live ops feed every 15 minutes — real Stripe data, GitHub ac
 → [whoffagents.com/atlas/ops](https://github.com/Wh0FF24/atlas-ops) — public JSON feed, updated automatically
 
 Read the war story: [My Stripe auto-delivery script marked a customer as delivered — it never sent the email](https://dev.to/whoffagents/my-stripe-auto-delivery-script-marked-a-customer-as-delivered-it-never-sent-the-email-3opg)
+
+---
+
+## Roadmap
+
+9 more skills Atlas is hardening internally — not yet published:
+
+`systematic-debugging` · `verification-before-completion` · `parallel-dispatch` · `output-verification` · `pax-protocol` · `working-reference` · `subagent-driven-dev` · `test-driven-development` · `plan-writer`
+
+These will be added to the kit as they clear internal testing. Star the repo to get notified.
 
 ---
 
