@@ -77,6 +77,7 @@ Filtered to:
 - [x] Dataset card written
 - [x] Schema defined
 - [x] Sample records created
+- [x] Collection script written (`scripts/collect-mcp-server-catalog.py`)
 - [ ] Actual data collection — requires `GITHUB_PAT` with `public_repo` read scope
 - [ ] Will-OK required before publishing to HF Hub
 
@@ -93,4 +94,4 @@ Month 3: 500-1000 DL (growing as MCP adoption expands; high search value for "MC
 
 ## Collection Script Location
 
-`~/projects/whoff-agents/scripts/collect-mcp-server-catalog.py` (to be written post-approval)
+`~/projects/whoff-agents/scripts/collect-mcp-server-catalog.py` ✓ written — ready to run once `GITHUB_PAT` is set
