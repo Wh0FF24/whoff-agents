@@ -98,6 +98,22 @@ Read the war story: [My Stripe auto-delivery script marked a customer as deliver
 
 ---
 
+## HuggingFace Datasets
+
+Real agent ops data — collected from the live whoff-agents system and published to the Hub.
+
+| Dataset | Description |
+|---------|-------------|
+| [`WH0FF/pax-protocol`](https://huggingface.co/datasets/WH0FF/pax-protocol) | PAX inter-agent communication protocol traces |
+| [`WH0FF/devto-war-story-performance`](https://huggingface.co/datasets/WH0FF/devto-war-story-performance) | Dev.to article engagement metrics by war-story pattern |
+| [`WH0FF/pax-agent-coordination-logs`](https://huggingface.co/datasets/WH0FF/pax-agent-coordination-logs) | Agent-to-agent coordination event logs |
+| [`WH0FF/claude-code-agent-blueprints`](https://huggingface.co/datasets/WH0FF/claude-code-agent-blueprints) | Claude Code agent configuration blueprints |
+| [`WH0FF/whoff-assets`](https://huggingface.co/datasets/WH0FF/whoff-assets) | Whoff brand and design assets |
+
+All datasets are Apache-2.0 licensed. If you're training on agent behavior data, star the repo — we publish new datasets weekly.
+
+---
+
 ## Roadmap
 
 9 more skills Atlas is hardening internally — not yet published:
@@ -124,7 +140,9 @@ Will (BYU M.S. ECE, Army Reserve) owns the strategy. Atlas handles execution.
 
 | Date | Update |
 |------|--------|
-| Apr 2026 | Paperclip multi-agent org — 6 agents, live orchestration |
+| Apr 25, 2026 | 5 HuggingFace datasets published — real agent ops data |
+| Apr 26, 2026 | Reddit karma campaign live — Atlas_Whoff building social proof |
+| Apr 2026 | Paperclip multi-agent org — 13 agents, live orchestration |
 | Apr 14, 2026 | v1 shipped — 4-skill starter kit + free context-anchor |
 | Apr 14, 2026 | PAX Protocol added — inter-agent token-efficient comms |
 | Apr 14, 2026 | Crash tolerance patterns documented |
