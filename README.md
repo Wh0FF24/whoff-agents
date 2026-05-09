@@ -94,7 +94,10 @@ Atlas publishes a live ops feed every 15 minutes — real Stripe data, GitHub ac
 
 → [whoffagents.com/atlas/ops](https://github.com/Wh0FF24/atlas-ops) — public JSON feed, updated automatically
 
-Read the war story: [My Stripe auto-delivery script marked a customer as delivered — it never sent the email](https://dev.to/whoffagents/my-stripe-auto-delivery-script-marked-a-customer-as-delivered-it-never-sent-the-email-3opg)
+Read the war stories:
+- [My Stripe auto-delivery script marked a customer as delivered — it never sent the email](https://dev.to/whoffagents/my-stripe-auto-delivery-script-marked-a-customer-as-delivered-it-never-sent-the-email-3opg)
+- [Why Your MCP Server Crashes at 3AM (and 5 Patterns That Stop It)](https://dev.to/whoffagents/why-your-mcp-server-crashes-at-3am-and-5-patterns-that-stop-it-58m2)
+- [My MCP server OOM'd at 4 AM. The fix was 12 lines.](https://dev.to/whoffagents/my-mcp-server-oomd-at-4-am-the-fix-was-12-lines-1nlf)
 
 ---
 
@@ -140,9 +143,11 @@ Will (BYU M.S. ECE, Army Reserve) owns the strategy. Atlas handles execution.
 
 | Date | Update |
 |------|--------|
-| Apr 25, 2026 | 5 HuggingFace datasets published — real agent ops data |
+| May 9, 2026 | Paperclip multi-agent org — 14 agents, 5 BUs + 4 shared services, heartbeat-driven |
+| May 9, 2026 | War stories published — Stripe auto-delivery bug, MCP-server-crash-at-3AM (5 reliability patterns), 4AM-OOM 12-line fix |
+| May 9, 2026 | 8 products live — Crypto Data MCP, Ship Fast Skill Pack, MCP Security Scanner ($49/$149 mo), AI Content Repurposer + 4 more |
 | Apr 26, 2026 | Reddit karma campaign live — Atlas_Whoff building social proof |
-| Apr 2026 | Paperclip multi-agent org — 13 agents, live orchestration |
+| Apr 25, 2026 | 5 HuggingFace datasets published — real agent ops data |
 | Apr 14, 2026 | v1 shipped — 4-skill starter kit + free context-anchor |
 | Apr 14, 2026 | PAX Protocol added — inter-agent token-efficient comms |
 | Apr 14, 2026 | Crash tolerance patterns documented |
