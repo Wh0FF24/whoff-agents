@@ -1,0 +1,49 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+.youtube-secrets.json
+.youtube-token.json
+*-secrets.json
+*-token.json
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Local agent / harness state
+.paul/
+.omc/
+.claude/
+
+# Logs (may contain customer data, transcripts)
+logs/
+
+# Build / dependency caches
+node_modules/
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+
+# Voice-cloning reference clips (source material — keep local)
+*-voice-ref.mp3
+*-voice-reference.mp3
+atlas-voice-*.mp3
+atlas_voice_*.mp3
+jocko-voice-ref.mp3
+jocko_ref.mp3
+reynolds-voice-ref.mp3
+reynolds_ref.mp3
+sung-jin-woo-voice-ref.mp3
+ref-talkdown-*.mp3
+ref-skycastle-*.mp3
+
+# Large render artifacts at repo root (rendered Shorts go to YouTube, not git)
+/VIRAL-SHORT-*.mp4
+/*_TEMP_MPY_*.mp4
