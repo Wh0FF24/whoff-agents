@@ -29,7 +29,7 @@
   function uid() { return state.nextId++; }
   function save() {
     try { localStorage.setItem(LS_KEY, JSON.stringify(state)); }
-    catch (e) { toast("⚠ Could not save — storage full?"); }
+    catch (e) { toast("Could not save. Storage may be full."); }
   }
   function load() {
     try {
@@ -114,7 +114,7 @@
     var t = tableById(tableId);
     if (!t) return;
     if (seatIndex == null || seatTaken(tableId, seatIndex)) seatIndex = firstFreeSeat(t);
-    if (seatIndex === -1) { toast("“" + t.name + "” is full — add seats or pick another table."); return; }
+    if (seatIndex === -1) { toast("“" + t.name + "” is full. Add seats or pick another table."); return; }
     state.assign[gid] = { t: tableId, s: seatIndex };
     toast(guestById(gid).name + " → " + t.name);
   }
@@ -371,7 +371,7 @@
           });
           li.appendChild(un);
         } else {
-          li.appendChild(el("span", { class: "empty" }, "empty — tap to seat"));
+          li.appendChild(el("span", { class: "empty" }, "empty, tap to seat"));
         }
         li.addEventListener("click", function () { openPicker(t.id, i); });
         list.appendChild(li);
@@ -412,7 +412,7 @@
       });
       list.appendChild(li);
     });
-    if (!items.length) list.appendChild(el("li", {}, "No guests found — add some first."));
+    if (!items.length) list.appendChild(el("li", {}, "No guests found. Add some first."));
   }
 
   // ---------- upgrade / licensing ----------
@@ -523,7 +523,7 @@
     var idx = el("div", { class: "pindex" });
     state.guests.slice().sort(function (a, b) { return a.name.localeCompare(b.name); })
       .forEach(function (g) {
-        idx.appendChild(el("div", {}, g.name + " — " + (guestTableLabel(g.id) || "unseated")));
+        idx.appendChild(el("div", {}, g.name + " - " + (guestTableLabel(g.id) || "unseated")));
       });
     sheet.appendChild(idx);
     // floor plan
@@ -533,17 +533,17 @@
       pf.appendChild(exportSVG());
       sheet.appendChild(pf);
     }
-    if (!isPro()) sheet.appendChild(el("p", { class: "pfoot" }, "Made with SeatSage — seatsage app · upgrade to remove this line"));
+    if (!isPro()) sheet.appendChild(el("p", { class: "pfoot" }, "Made with SeatSage · seatsage.whoffagents.com"));
   }
 
   var STYLE_MAP = {
-    "tbl-shape": { fill: "#ffffff", stroke: "#b9a5e3", "stroke-width": "2" },
-    "seat": { fill: "#e7e0f6", stroke: "#b9a5e3", "stroke-width": "1" },
-    "seat taken": { fill: "#7c5cbf", stroke: "#5d3fa0", "stroke-width": "1" },
+    "tbl-shape": { fill: "#ffffff", stroke: "#9db8a5", "stroke-width": "2" },
+    "seat": { fill: "#e6eee6", stroke: "#9db8a5", "stroke-width": "1" },
+    "seat taken": { fill: "#3e6b50", stroke: "#335a42", "stroke-width": "1" },
     "seat-initials": { "font-size": "7.5px", "font-weight": "700", fill: "#ffffff", "text-anchor": "middle", "font-family": "Helvetica,Arial,sans-serif" },
-    "tbl-label": { "font-size": "13px", "font-weight": "700", fill: "#2b2440", "text-anchor": "middle", "font-family": "Helvetica,Arial,sans-serif" },
-    "tbl-cap": { "font-size": "10px", fill: "#6b6480", "text-anchor": "middle", "font-family": "Helvetica,Arial,sans-serif" },
-    "tbl-cap full": { "font-size": "10px", fill: "#2e8b57", "text-anchor": "middle", "font-family": "Helvetica,Arial,sans-serif" }
+    "tbl-label": { "font-size": "13px", "font-weight": "700", fill: "#212721", "text-anchor": "middle", "font-family": "Helvetica,Arial,sans-serif" },
+    "tbl-cap": { "font-size": "10px", fill: "#5c665c", "text-anchor": "middle", "font-family": "Helvetica,Arial,sans-serif" },
+    "tbl-cap full": { "font-size": "10px", fill: "#3e6b50", "text-anchor": "middle", "font-family": "Helvetica,Arial,sans-serif" }
   };
   function inlineStyles(node) {
     var nodes = node.querySelectorAll ? node.querySelectorAll("[class]") : [];
@@ -592,7 +592,7 @@
       a.click();
       toast("Floor plan PNG downloaded");
     };
-    img.onerror = function () { toast("⚠ PNG export failed in this browser — try Print instead."); };
+    img.onerror = function () { toast("PNG export failed in this browser. Try Print instead."); };
     img.src = url;
   }
   function downloadCSV() {
@@ -612,7 +612,7 @@
   function downloadBackup() {
     downloadBlob(JSON.stringify(state, null, 1), "application/json",
       "seatsage-backup-" + new Date().toISOString().slice(0, 10) + ".json");
-    toast("Backup saved — keep it somewhere safe!");
+    toast("Backup saved. Keep it somewhere safe.");
   }
   function downloadBlob(text, type, filename) {
     var blob = new Blob([text], { type: type });
@@ -632,8 +632,8 @@
         s.nextId = s.nextId || 1000;
         state = s;
         mutate(function () {});
-        toast("Backup restored ✓");
-      } catch (e) { toast("⚠ That doesn't look like a SeatSage backup file."); }
+        toast("Backup restored");
+      } catch (e) { toast("That doesn't look like a SeatSage backup file."); }
     };
     r.readAsText(file);
   }
@@ -674,8 +674,8 @@
     $("bulkText").value = "";
     $("bulkModal").hidden = true;
     if (toAdd.length < names.length) {
-      openUpgrade("Added " + toAdd.length + " guests — free plan caps at " + CFG.FREE_MAX_GUESTS + ". Upgrade for unlimited.");
-    } else toast("Added " + toAdd.length + " guests ✓");
+      openUpgrade("Added " + toAdd.length + " guests. Free plan caps at " + CFG.FREE_MAX_GUESTS + ". Upgrade for unlimited.");
+    } else toast("Added " + toAdd.length + " guests");
   });
 
   $("addRound").addEventListener("click", function () { mutate(function () { addTable("round"); }); });
@@ -738,7 +738,7 @@
     var msg = $("unlockMsg");
     tryUnlock($("unlockInput").value).then(function (ok) {
       if (ok) {
-        msg.textContent = "Pro unlocked — enjoy! 🎉";
+        msg.textContent = "Pro unlocked. Enjoy!";
         msg.className = "tiny ok";
         setTimeout(function () { $("upgradeModal").hidden = true; render(); }, 900);
       } else {

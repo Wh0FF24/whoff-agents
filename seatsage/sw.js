@@ -1,5 +1,5 @@
 /* SeatSage service worker — cache-first for app shell so it works offline at the venue. */
-var CACHE = "seatsage-v1";
+var CACHE = "seatsage-v2";
 var ASSETS = [
   "index.html",
   "app.html",
@@ -8,7 +8,13 @@ var ASSETS = [
   "js/app.js",
   "manifest.webmanifest",
   "icons/icon-192.png",
-  "icons/icon-512.png"
+  "icons/icon-512.png",
+  "icons/sprite.svg",
+  "fonts/cabinet-grotesk-700.woff2",
+  "fonts/cabinet-grotesk-800.woff2",
+  "fonts/satoshi-400.woff2",
+  "fonts/satoshi-500.woff2",
+  "fonts/satoshi-700.woff2"
 ];
 self.addEventListener("install", function (e) {
   // cache each asset individually so one miss (e.g. SSR-served pages) doesn't

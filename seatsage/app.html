@@ -3,33 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>SeatSage Planner</title>
-<meta name="description" content="SeatSage seating chart planner — drag-and-drop tables, assign guests, print your chart.">
+<title>Seating Chart Planner | SeatSage</title>
+<meta name="description" content="The SeatSage planner: drag and drop tables, seat your guests, print venue-ready seating charts. Runs in your browser, works offline.">
+<link rel="canonical" href="https://seatsage.whoffagents.com/app.html">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
-<meta name="theme-color" content="#7c5cbf">
+<meta name="theme-color" content="#3e6b50">
+<link rel="preload" href="fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/satoshi-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="app">
 <header class="app-header">
-  <a class="brand" href="index.html" title="SeatSage home"><span class="brand-mark">❖</span><span class="brand-name">SeatSage</span></a>
-  <input id="eventName" class="event-name" type="text" placeholder="Event name (e.g. Sam & Riley's Wedding)" maxlength="60">
+  <a class="brand" href="index.html" title="SeatSage home">
+    <svg class="brand-mark" style="width:22px;height:22px" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="7" fill="none" stroke="#3e6b50" stroke-width="2.5"/><circle cx="16" cy="4.5" r="2.6" fill="#3e6b50"/><circle cx="27.5" cy="16" r="2.6" fill="#3e6b50"/><circle cx="16" cy="27.5" r="2.6" fill="#3e6b50"/><circle cx="4.5" cy="16" r="2.6" fill="#3e6b50"/></svg>
+    <span class="brand-name">SeatSage</span>
+  </a>
+  <input id="eventName" class="event-name" type="text" placeholder="Event name (e.g. Sam and Riley's wedding)" maxlength="60">
   <div class="header-actions">
     <div class="stats" id="stats"></div>
     <div class="menu-wrap">
-      <button class="btn btn-ghost" id="exportBtn">Export ▾</button>
+      <button class="btn btn-ghost" id="exportBtn">Export<svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-caret-down"/></svg></button>
       <div class="menu" id="exportMenu" hidden>
-        <button id="printBtn">🖨 Print chart</button>
-        <button id="pngBtn">🖼 Floor plan PNG <span class="pro-tag">PRO</span></button>
-        <button id="csvBtn">📄 Guest CSV <span class="pro-tag">PRO</span></button>
+        <button id="printBtn"><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-printer"/></svg>Print chart</button>
+        <button id="pngBtn"><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-image"/></svg>Floor plan PNG <span class="pro-tag">PRO</span></button>
+        <button id="csvBtn"><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-file-csv"/></svg>Guest CSV <span class="pro-tag">PRO</span></button>
         <hr>
-        <button id="backupBtn">💾 Backup file</button>
-        <button id="restoreBtn">📂 Restore backup</button>
+        <button id="backupBtn"><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-floppy-disk"/></svg>Backup file</button>
+        <button id="restoreBtn"><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-folder-open"/></svg>Restore backup</button>
       </div>
     </div>
     <button class="btn btn-primary" id="upgradeBtn">Upgrade</button>
-    <span class="pro-badge" id="proBadge" hidden>PRO ✓</span>
+    <span class="pro-badge" id="proBadge" hidden>PRO</span>
   </div>
 </header>
 
@@ -40,10 +46,10 @@
       <button class="btn btn-tiny" id="bulkAddBtn" title="Paste a whole list at once">Bulk add</button>
     </div>
     <form id="addGuestForm" class="add-guest">
-      <input id="guestNameInput" type="text" placeholder="Add guest name…" autocomplete="off" maxlength="60">
+      <input id="guestNameInput" type="text" placeholder="Add guest name" autocomplete="off" maxlength="60">
       <button class="btn btn-primary" type="submit">Add</button>
     </form>
-    <input id="guestSearch" class="guest-search" type="search" placeholder="Search guests…">
+    <input id="guestSearch" class="guest-search" type="search" placeholder="Search guests">
     <div class="guest-filters">
       <label><input type="checkbox" id="unseatedOnly"> Unseated only <span id="unseatedCount" class="count warn"></span></label>
     </div>
@@ -53,35 +59,35 @@
 
   <main class="floor-wrap">
     <div class="toolbar">
-      <button class="btn" id="addRound">+ Round table</button>
-      <button class="btn" id="addRect">+ Banquet table</button>
+      <button class="btn" id="addRound"><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-plus"/></svg>Round table</button>
+      <button class="btn" id="addRect"><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-plus"/></svg>Banquet table</button>
       <span class="toolbar-spacer"></span>
-      <button class="btn btn-ghost" id="zoomOut" title="Zoom out">−</button>
-      <button class="btn btn-ghost" id="zoomIn" title="Zoom in">+</button>
+      <button class="btn btn-ghost" id="zoomOut" title="Zoom out"><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-minus"/></svg></button>
+      <button class="btn btn-ghost" id="zoomIn" title="Zoom in"><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-plus"/></svg></button>
     </div>
     <div class="floor-scroll" id="floorScroll">
       <svg id="floor" xmlns="http://www.w3.org/2000/svg"></svg>
     </div>
-    <p class="floor-hint">Drag tables to arrange your room · tap a table to edit &amp; seat guests</p>
+    <p class="floor-hint">Drag tables to arrange your room. Tap a table to edit and seat guests.</p>
   </main>
 
   <aside class="inspector" id="inspector" hidden>
     <div class="panel-head">
       <h2 id="inspTitle">Table</h2>
-      <button class="btn btn-tiny" id="inspClose">✕</button>
+      <button class="btn btn-tiny" id="inspClose" title="Close"><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-x"/></svg></button>
     </div>
     <label class="field">Name <input id="inspName" type="text" maxlength="30"></label>
     <label class="field">Seats
       <span class="stepper">
-        <button class="btn btn-tiny" id="seatMinus">−</button>
+        <button class="btn btn-tiny" id="seatMinus" title="Fewer seats"><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-minus"/></svg></button>
         <span id="inspSeats" class="stepper-val"></span>
-        <button class="btn btn-tiny" id="seatPlus">+</button>
+        <button class="btn btn-tiny" id="seatPlus" title="More seats"><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-plus"/></svg></button>
       </span>
     </label>
-    <div class="field" id="rotField"><span>Rotate</span> <button class="btn btn-tiny" id="rotBtn">↻ 90°</button></div>
+    <div class="field" id="rotField"><span>Rotate</span> <button class="btn btn-tiny" id="rotBtn"><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-arrow-clockwise"/></svg>90&deg;</button></div>
     <h3 class="insp-sub">Seats</h3>
     <ul class="seat-list" id="seatList"></ul>
-    <button class="btn btn-danger btn-block" id="deleteTable">Delete table</button>
+    <button class="btn btn-danger btn-block" id="deleteTable"><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-trash"/></svg>Delete table</button>
   </aside>
 </div>
 
@@ -89,8 +95,8 @@
 <div class="modal-overlay" id="bulkModal" hidden>
   <div class="modal">
     <h2>Bulk add guests</h2>
-    <p>Paste names, one per line. Couples like <em>"Alex &amp; Jo Smith"</em> can stay on one line or be split — your call.</p>
-    <textarea id="bulkText" rows="10" placeholder="Alex Smith&#10;Jo Smith&#10;Grandma Rosie&#10;…"></textarea>
+    <p>Paste names, one per line. Couples like <em>"Alex and Jo Smith"</em> can stay on one line or be split. Your call.</p>
+    <textarea id="bulkText" rows="10" placeholder="Alex Smith&#10;Jo Smith&#10;Grandma Rosie"></textarea>
     <div class="modal-actions">
       <button class="btn btn-ghost" data-close>Cancel</button>
       <button class="btn btn-primary" id="bulkConfirm">Add guests</button>
@@ -102,7 +108,7 @@
 <div class="modal-overlay" id="pickerModal" hidden>
   <div class="modal">
     <h2 id="pickerTitle">Seat a guest</h2>
-    <input id="pickerSearch" type="search" placeholder="Search…">
+    <input id="pickerSearch" type="search" placeholder="Search">
     <ul class="picker-list" id="pickerList"></ul>
     <div class="modal-actions"><button class="btn btn-ghost" data-close>Cancel</button></div>
   </div>
@@ -112,15 +118,15 @@
 <div class="modal-overlay" id="upgradeModal" hidden>
   <div class="modal">
     <h2>SeatSage Pro</h2>
-    <p class="price-line"><strong>$14.99</strong> one-time · yours forever · no subscription</p>
+    <p class="price-line"><strong>$14.99</strong> one-time. Yours forever, no subscription.</p>
     <ul class="pro-list">
-      <li>✓ Unlimited tables &amp; guests</li>
-      <li>✓ PNG floor-plan export</li>
-      <li>✓ CSV export for your venue</li>
-      <li>✓ Watermark-free printing</li>
+      <li><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-check"/></svg>Unlimited tables and guests</li>
+      <li><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-check"/></svg>PNG floor plan export</li>
+      <li><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-check"/></svg>CSV export for your venue</li>
+      <li><svg class="icon" aria-hidden="true"><use href="icons/sprite.svg#i-check"/></svg>Printing without the footer line</li>
     </ul>
-    <a class="btn btn-primary btn-block" id="buyBtn" href="#" target="_blank" rel="noopener">Get Pro — $14.99</a>
-    <p class="tiny center">You'll receive an unlock code instantly after purchase.</p>
+    <a class="btn btn-primary btn-block" id="buyBtn" href="#" target="_blank" rel="noopener">Unlock Pro for $14.99</a>
+    <p class="tiny center">You receive an unlock code right after purchase.</p>
     <details class="unlock-details" id="unlockDetails">
       <summary>I have an unlock code</summary>
       <form id="unlockForm" class="unlock-form">
