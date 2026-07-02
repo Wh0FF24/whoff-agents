@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>SeatSage Planner</title>
+<meta name="description" content="SeatSage seating chart planner — drag-and-drop tables, assign guests, print your chart.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="theme-color" content="#7c5cbf">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app">
+<header class="app-header">
+  <a class="brand" href="index.html" title="SeatSage home"><span class="brand-mark">❖</span><span class="brand-name">SeatSage</span></a>
+  <input id="eventName" class="event-name" type="text" placeholder="Event name (e.g. Sam & Riley's Wedding)" maxlength="60">
+  <div class="header-actions">
+    <div class="stats" id="stats"></div>
+    <div class="menu-wrap">
+      <button class="btn btn-ghost" id="exportBtn">Export ▾</button>
+      <div class="menu" id="exportMenu" hidden>
+        <button id="printBtn">🖨 Print chart</button>
+        <button id="pngBtn">🖼 Floor plan PNG <span class="pro-tag">PRO</span></button>
+        <button id="csvBtn">📄 Guest CSV <span class="pro-tag">PRO</span></button>
+        <hr>
+        <button id="backupBtn">💾 Backup file</button>
+        <button id="restoreBtn">📂 Restore backup</button>
+      </div>
+    </div>
+    <button class="btn btn-primary" id="upgradeBtn">Upgrade</button>
+    <span class="pro-badge" id="proBadge" hidden>PRO ✓</span>
+  </div>
+</header>
+
+<div class="app-body">
+  <aside class="guests-panel">
+    <div class="panel-head">
+      <h2>Guests <span id="guestCount" class="count"></span></h2>
+      <button class="btn btn-tiny" id="bulkAddBtn" title="Paste a whole list at once">Bulk add</button>
+    </div>
+    <form id="addGuestForm" class="add-guest">
+      <input id="guestNameInput" type="text" placeholder="Add guest name…" autocomplete="off" maxlength="60">
+      <button class="btn btn-primary" type="submit">Add</button>
+    </form>
+    <input id="guestSearch" class="guest-search" type="search" placeholder="Search guests…">
+    <div class="guest-filters">
+      <label><input type="checkbox" id="unseatedOnly"> Unseated only <span id="unseatedCount" class="count warn"></span></label>
+    </div>
+    <ul class="guest-list" id="guestList"></ul>
+    <p class="hint" id="assignHint" hidden>Tap a table to seat <strong id="assignName"></strong> · <button class="linklike" id="cancelAssign">cancel</button></p>
+  </aside>
+
+  <main class="floor-wrap">
+    <div class="toolbar">
+      <button class="btn" id="addRound">+ Round table</button>
+      <button class="btn" id="addRect">+ Banquet table</button>
+      <span class="toolbar-spacer"></span>
+      <button class="btn btn-ghost" id="zoomOut" title="Zoom out">−</button>
+      <button class="btn btn-ghost" id="zoomIn" title="Zoom in">+</button>
+    </div>
+    <div class="floor-scroll" id="floorScroll">
+      <svg id="floor" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+    <p class="floor-hint">Drag tables to arrange your room · tap a table to edit &amp; seat guests</p>
+  </main>
+
+  <aside class="inspector" id="inspector" hidden>
+    <div class="panel-head">
+      <h2 id="inspTitle">Table</h2>
+      <button class="btn btn-tiny" id="inspClose">✕</button>
+    </div>
+    <label class="field">Name <input id="inspName" type="text" maxlength="30"></label>
+    <label class="field">Seats
+      <span class="stepper">
+        <button class="btn btn-tiny" id="seatMinus">−</button>
+        <span id="inspSeats" class="stepper-val"></span>
+        <button class="btn btn-tiny" id="seatPlus">+</button>
+      </span>
+    </label>
+    <div class="field" id="rotField"><span>Rotate</span> <button class="btn btn-tiny" id="rotBtn">↻ 90°</button></div>
+    <h3 class="insp-sub">Seats</h3>
+    <ul class="seat-list" id="seatList"></ul>
+    <button class="btn btn-danger btn-block" id="deleteTable">Delete table</button>
+  </aside>
+</div>
+
+<!-- Bulk add modal -->
+<div class="modal-overlay" id="bulkModal" hidden>
+  <div class="modal">
+    <h2>Bulk add guests</h2>
+    <p>Paste names, one per line. Couples like <em>"Alex &amp; Jo Smith"</em> can stay on one line or be split — your call.</p>
+    <textarea id="bulkText" rows="10" placeholder="Alex Smith&#10;Jo Smith&#10;Grandma Rosie&#10;…"></textarea>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" data-close>Cancel</button>
+      <button class="btn btn-primary" id="bulkConfirm">Add guests</button>
+    </div>
+  </div>
+</div>
+
+<!-- Guest picker modal -->
+<div class="modal-overlay" id="pickerModal" hidden>
+  <div class="modal">
+    <h2 id="pickerTitle">Seat a guest</h2>
+    <input id="pickerSearch" type="search" placeholder="Search…">
+    <ul class="picker-list" id="pickerList"></ul>
+    <div class="modal-actions"><button class="btn btn-ghost" data-close>Cancel</button></div>
+  </div>
+</div>
+
+<!-- Upgrade modal -->
+<div class="modal-overlay" id="upgradeModal" hidden>
+  <div class="modal">
+    <h2>SeatSage Pro</h2>
+    <p class="price-line"><strong>$14.99</strong> one-time · yours forever · no subscription</p>
+    <ul class="pro-list">
+      <li>✓ Unlimited tables &amp; guests</li>
+      <li>✓ PNG floor-plan export</li>
+      <li>✓ CSV export for your venue</li>
+      <li>✓ Watermark-free printing</li>
+    </ul>
+    <a class="btn btn-primary btn-block" id="buyBtn" href="#" target="_blank" rel="noopener">Get Pro — $14.99</a>
+    <p class="tiny center">You'll receive an unlock code instantly after purchase.</p>
+    <details class="unlock-details" id="unlockDetails">
+      <summary>I have an unlock code</summary>
+      <form id="unlockForm" class="unlock-form">
+        <input id="unlockInput" type="text" placeholder="SAGE-XXXX-XXXX" autocomplete="off">
+        <button class="btn btn-primary" type="submit">Unlock</button>
+      </form>
+      <p class="tiny" id="unlockMsg"></p>
+    </details>
+    <div class="modal-actions"><button class="btn btn-ghost" data-close>Maybe later</button></div>
+  </div>
+</div>
+
+<input type="file" id="restoreFile" accept=".json,application/json" hidden>
+<div class="toast" id="toast" hidden></div>
+<section id="printSheet" class="print-sheet" aria-hidden="true"></section>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js');</script>
+</body>
+</html>

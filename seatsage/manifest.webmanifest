@@ -1,0 +1,14 @@
+{
+  "name": "SeatSage — Seating Chart Planner",
+  "short_name": "SeatSage",
+  "description": "Effortless seating charts for weddings & events. Drag-and-drop tables, assign guests, print beautiful charts.",
+  "start_url": "app.html",
+  "display": "standalone",
+  "background_color": "#faf8ff",
+  "theme_color": "#7c5cbf",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
