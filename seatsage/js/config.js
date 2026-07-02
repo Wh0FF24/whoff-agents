@@ -4,7 +4,7 @@
 // provider — see docs/LAUNCH_PLAYBOOK.md). Codes are verified locally against
 // SHA-256 hashes; plaintext codes are NOT in this repo.
 window.SEATSAGE_CONFIG = {
-  PAYMENT_URL: "https://buy.stripe.com/REPLACE_ME", // TODO: paste your real payment link
+  PAYMENT_URL: "https://buy.stripe.com/bJe4gB5F5afP5vFgvHaZi0s",
   PRICE: "$14.99",
   FREE_MAX_TABLES: 3,
   FREE_MAX_GUESTS: 25,
