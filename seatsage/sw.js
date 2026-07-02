@@ -11,7 +11,13 @@ var ASSETS = [
   "icons/icon-512.png"
 ];
 self.addEventListener("install", function (e) {
-  e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(ASSETS); }).then(function(){ return self.skipWaiting(); }));
+  // cache each asset individually so one miss (e.g. SSR-served pages) doesn't
+  // break the whole offline install
+  e.waitUntil(caches.open(CACHE).then(function (c) {
+    return Promise.all(ASSETS.map(function (a) {
+      return c.add(a).catch(function () {});
+    }));
+  }).then(function () { return self.skipWaiting(); }));
 });
 self.addEventListener("activate", function (e) {
   e.waitUntil(caches.keys().then(function (keys) {
