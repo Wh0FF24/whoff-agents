@@ -73,14 +73,23 @@
 
 ## Known issues / debt
 
-- The Higgsfield subdomain (`sunny-shore-765`) is unbranded — domain purchase is day-1
-  playbook item.
-- Landing page exists twice (static `index.html` for standalone hosting + JSX port in
-  the site repo). Keep both in sync or drop one after domain migration.
+- Primary domain is `seatsage.whoffagents.com` via AWS Amplify: repo has `amplify.yml`
+  + `customHttp.yml` + `docs/DEPLOY_AMPLIFY.md` runbook, but the founder must do the
+  console clicks (connect repo, add subdomain). Until then the Higgsfield URL is the
+  only live one. All canonicals/sitemap/OG already point at the whoffagents subdomain.
+- Landing page exists twice (static `index.html` for Amplify/standalone hosting + JSX
+  port at `app/src/routes/index.tsx` in the Higgsfield site repo). Keep both in sync,
+  or retire the Higgsfield mirror after the Amplify domain is live.
+- Higgsfield's edge overrides `robots.txt` with its own content-signals file; the
+  repo's robots.txt will serve correctly from Amplify.
 - `PAYMENT_URL` in production config.js is a placeholder (`REPLACE_ME`) until founder
   supplies the real link.
 - Print output tested in Chromium only; verify Safari/Firefox print margins.
 - No analytics yet.
+- v2 design system: sage/bone palette, Cabinet Grotesk + Satoshi (self-hosted in
+  `fonts/`), Phosphor icon sprite (`icons/sprite.svg`), generated photography in
+  `img/`. Design rules followed: no emoji, no em-dashes in UI copy, one accent color,
+  documented shape system (pill buttons / 16px cards / 10px inputs).
 
 ## Success measures (from the founder)
 
